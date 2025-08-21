@@ -1,12 +1,17 @@
 import { type Metadata } from "next";
 
+import Navbar from "@/components/navigation/navbar";
+import { ThemeProvider } from "@/components/theme-provider";
 import "@/styles/tailwind.css";
 
 export const metadata: Metadata = {
   title: {
-    template: "%s - Studio",
-    default: "Studio - Award winning developer studio based in Denmark",
+    template: "%s - Spencer Sharp",
+    default:
+      "Spencer Sharp - Software designer, founder, and amateur astronaut",
   },
+  description:
+    "I’m Spencer, a software designer and entrepreneur based in New York City. I’m the founder and CEO of Planetaria, where we develop technologies that empower regular people to explore space on their own terms.",
 };
 
 export default function RootLayout({
@@ -15,22 +20,29 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="h-full antialiased">
+    <html lang="en" className="h-full antialiased" suppressHydrationWarning>
       <body className="bg-muted flex h-full dark:bg-black">
-        <div className="flex w-full">
-          <div className="fixed inset-0 flex justify-center sm:px-8">
-            <div className="flex w-full max-w-7xl lg:px-8">
-              <div className="bg-background ring-border w-full ring-1"></div>
+        <ThemeProvider
+          attribute="class"
+          enableSystem={false}
+          disableTransitionOnChange
+        >
+          <div className="flex w-full">
+            <div className="fixed inset-0 flex justify-center sm:px-8">
+              <div className="flex w-full max-w-7xl lg:px-8">
+                <div className="bg-background ring-border w-full ring-1"></div>
+              </div>
+            </div>
+            <div className="relative flex w-full flex-col">
+              {/* Header */}
+              <Navbar />
+
+              <main className="flex-auto">{children}</main>
+
+              {/* Footer */}
             </div>
           </div>
-          <div className="relative flex w-full flex-col">
-            {/* Header */}
-
-            <main className="flex-auto">{children}</main>
-
-            {/* Footer */}
-          </div>
-        </div>
+        </ThemeProvider>
       </body>
     </html>
   );

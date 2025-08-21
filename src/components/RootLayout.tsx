@@ -1,5 +1,7 @@
-'use client'
+"use client";
 
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import {
   createContext,
   useContext,
@@ -7,40 +9,39 @@ import {
   useId,
   useRef,
   useState,
-} from 'react'
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
-import clsx from 'clsx'
-import { motion, MotionConfig, useReducedMotion } from 'motion/react'
+} from "react";
 
-import { Button } from '@/components/Button'
-import { Container } from '@/components/Container'
-import { Footer } from '@/components/Footer'
-import { GridPattern } from '@/components/GridPattern'
-import { Logo, Logomark } from '@/components/Logo'
-import { Offices } from '@/components/Offices'
-import { SocialMedia } from '@/components/SocialMedia'
+import clsx from "clsx";
+import { MotionConfig, motion, useReducedMotion } from "motion/react";
+
+import { Button } from "@/components/Button";
+import { Container } from "@/components/Container";
+import { Footer } from "@/components/Footer";
+import { GridPattern } from "@/components/GridPattern";
+import { Logo, Logomark } from "@/components/Logo";
+import { Offices } from "@/components/Offices";
+import { SocialMedia } from "@/components/SocialMedia";
 
 const RootLayoutContext = createContext<{
-  logoHovered: boolean
-  setLogoHovered: React.Dispatch<React.SetStateAction<boolean>>
-} | null>(null)
+  logoHovered: boolean;
+  setLogoHovered: React.Dispatch<React.SetStateAction<boolean>>;
+} | null>(null);
 
-function XIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
+function XIcon(props: React.ComponentPropsWithoutRef<"svg">) {
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true" {...props}>
       <path d="m5.636 4.223 14.142 14.142-1.414 1.414L4.222 5.637z" />
       <path d="M4.222 18.363 18.364 4.22l1.414 1.414L5.636 19.777z" />
     </svg>
-  )
+  );
 }
 
-function MenuIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
+function MenuIcon(props: React.ComponentPropsWithoutRef<"svg">) {
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true" {...props}>
       <path d="M2 6h20v2H2zM2 16h20v2H2z" />
     </svg>
-  )
+  );
 }
 
 function Header({
@@ -51,14 +52,14 @@ function Header({
   toggleRef,
   invert = false,
 }: {
-  panelId: string
-  icon: React.ComponentType<{ className?: string }>
-  expanded: boolean
-  onToggle: () => void
-  toggleRef: React.RefObject<HTMLButtonElement | null>
-  invert?: boolean
+  panelId: string;
+  icon: React.ComponentType<{ className?: string }>;
+  expanded: boolean;
+  onToggle: () => void;
+  toggleRef: React.RefObject<HTMLButtonElement | null>;
+  invert?: boolean;
 }) {
-  let { logoHovered, setLogoHovered } = useContext(RootLayoutContext)!
+  const { logoHovered, setLogoHovered } = useContext(RootLayoutContext)!;
 
   return (
     <Container>
@@ -88,27 +89,27 @@ function Header({
             ref={toggleRef}
             type="button"
             onClick={onToggle}
-            aria-expanded={expanded ? 'true' : 'false'}
+            aria-expanded={expanded ? "true" : "false"}
             aria-controls={panelId}
             className={clsx(
-              'group -m-2.5 rounded-full p-2.5 transition',
-              invert ? 'hover:bg-white/10' : 'hover:bg-neutral-950/10',
+              "group -m-2.5 rounded-full p-2.5 transition",
+              invert ? "hover:bg-white/10" : "hover:bg-neutral-950/10"
             )}
             aria-label="Toggle navigation"
           >
             <Icon
               className={clsx(
-                'h-6 w-6',
+                "h-6 w-6",
                 invert
-                  ? 'fill-white group-hover:fill-neutral-200'
-                  : 'fill-neutral-950 group-hover:fill-neutral-700',
+                  ? "fill-white group-hover:fill-neutral-200"
+                  : "fill-neutral-950 group-hover:fill-neutral-700"
               )}
             />
           </button>
         </div>
       </div>
     </Container>
-  )
+  );
 }
 
 function NavigationRow({ children }: { children: React.ReactNode }) {
@@ -118,15 +119,15 @@ function NavigationRow({ children }: { children: React.ReactNode }) {
         <div className="grid grid-cols-1 sm:grid-cols-2">{children}</div>
       </Container>
     </div>
-  )
+  );
 }
 
 function NavigationItem({
   href,
   children,
 }: {
-  href: string
-  children: React.ReactNode
+  href: string;
+  children: React.ReactNode;
 }) {
   return (
     <Link
@@ -136,12 +137,12 @@ function NavigationItem({
       {children}
       <span className="absolute inset-y-0 -z-10 w-screen bg-neutral-900 opacity-0 transition group-odd:right-0 group-even:left-0 group-hover:opacity-100" />
     </Link>
-  )
+  );
 }
 
 function Navigation() {
   return (
-    <nav className="mt-px font-display text-5xl font-medium tracking-tight text-white">
+    <nav className="font-display mt-px text-5xl font-medium tracking-tight text-white">
       <NavigationRow>
         <NavigationItem href="/work">Our Work</NavigationItem>
         <NavigationItem href="/about">About Us</NavigationItem>
@@ -151,35 +152,35 @@ function Navigation() {
         <NavigationItem href="/blog">Blog</NavigationItem>
       </NavigationRow>
     </nav>
-  )
+  );
 }
 
 function RootLayoutInner({ children }: { children: React.ReactNode }) {
-  let panelId = useId()
-  let [expanded, setExpanded] = useState(false)
-  let [isTransitioning, setIsTransitioning] = useState(false)
-  let openRef = useRef<React.ElementRef<'button'>>(null)
-  let closeRef = useRef<React.ElementRef<'button'>>(null)
-  let navRef = useRef<React.ElementRef<'div'>>(null)
-  let shouldReduceMotion = useReducedMotion()
+  const panelId = useId();
+  const [expanded, setExpanded] = useState(false);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const openRef = useRef<React.ElementRef<"button">>(null);
+  const closeRef = useRef<React.ElementRef<"button">>(null);
+  const navRef = useRef<React.ElementRef<"div">>(null);
+  const shouldReduceMotion = useReducedMotion();
 
   useEffect(() => {
     function onClick(event: MouseEvent) {
       if (
         event.target instanceof HTMLElement &&
-        event.target.closest('a')?.href === window.location.href
+        event.target.closest("a")?.href === window.location.href
       ) {
-        setIsTransitioning(false)
-        setExpanded(false)
+        setIsTransitioning(false);
+        setExpanded(false);
       }
     }
 
-    window.addEventListener('click', onClick)
+    window.addEventListener("click", onClick);
 
     return () => {
-      window.removeEventListener('click', onClick)
-    }
-  }, [])
+      window.removeEventListener("click", onClick);
+    };
+  }, []);
 
   return (
     <MotionConfig
@@ -190,7 +191,7 @@ function RootLayoutInner({ children }: { children: React.ReactNode }) {
       <header>
         <div
           className="absolute top-2 right-0 left-0 z-40 pt-14"
-          aria-hidden={expanded ? 'true' : undefined}
+          aria-hidden={expanded ? "true" : undefined}
           // @ts-ignore (https://github.com/facebook/react/issues/17157)
           inert={expanded ? true : undefined}
         >
@@ -200,11 +201,11 @@ function RootLayoutInner({ children }: { children: React.ReactNode }) {
             toggleRef={openRef}
             expanded={expanded}
             onToggle={() => {
-              setIsTransitioning(true)
-              setExpanded((expanded) => !expanded)
+              setIsTransitioning(true);
+              setExpanded((expanded) => !expanded);
               window.setTimeout(() =>
-                closeRef.current?.focus({ preventScroll: true }),
-              )
+                closeRef.current?.focus({ preventScroll: true })
+              );
             }}
           />
         </div>
@@ -212,9 +213,9 @@ function RootLayoutInner({ children }: { children: React.ReactNode }) {
         <motion.div
           layout
           id={panelId}
-          style={{ height: expanded ? 'auto' : '0.5rem' }}
+          style={{ height: expanded ? "auto" : "0.5rem" }}
           className="relative z-50 overflow-hidden bg-neutral-950 pt-2"
-          aria-hidden={expanded ? undefined : 'true'}
+          aria-hidden={expanded ? undefined : "true"}
           // @ts-ignore (https://github.com/facebook/react/issues/17157)
           inert={expanded ? undefined : true}
         >
@@ -227,11 +228,11 @@ function RootLayoutInner({ children }: { children: React.ReactNode }) {
                 toggleRef={closeRef}
                 expanded={expanded}
                 onToggle={() => {
-                  setIsTransitioning(true)
-                  setExpanded((expanded) => !expanded)
+                  setIsTransitioning(true);
+                  setExpanded((expanded) => !expanded);
                   window.setTimeout(() =>
-                    openRef.current?.focus({ preventScroll: true }),
-                  )
+                    openRef.current?.focus({ preventScroll: true })
+                  );
                 }}
               />
             </div>
@@ -282,16 +283,16 @@ function RootLayoutInner({ children }: { children: React.ReactNode }) {
         </motion.div>
       </motion.div>
     </MotionConfig>
-  )
+  );
 }
 
 export function RootLayout({ children }: { children: React.ReactNode }) {
-  let pathname = usePathname()
-  let [logoHovered, setLogoHovered] = useState(false)
+  const pathname = usePathname();
+  const [logoHovered, setLogoHovered] = useState(false);
 
   return (
     <RootLayoutContext.Provider value={{ logoHovered, setLogoHovered }}>
       <RootLayoutInner key={pathname}>{children}</RootLayoutInner>
     </RootLayoutContext.Provider>
-  )
+  );
 }
