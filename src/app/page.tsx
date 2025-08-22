@@ -2,6 +2,7 @@ import Container from "@/components/container";
 import Articles from "@/components/home/articles";
 import Gallery from "@/components/home/gallery";
 import Hero from "@/components/home/hero";
+import Newsletter from "@/components/home/newsletter";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
 
             <div className="space-y-10 lg:pl-16 xl:pl-24">
               {/* NewsLetter */}
+              <Newsletter />
 
               {/* Work */}
             </div>
