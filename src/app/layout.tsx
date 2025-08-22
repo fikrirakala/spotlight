@@ -1,5 +1,6 @@
 import { type Metadata } from "next";
 
+import Footer from "@/components/footer";
 import Navbar from "@/components/navigation/navbar";
 import { ThemeProvider } from "@/components/theme-provider";
 import "@/styles/tailwind.css";
@@ -40,6 +41,7 @@ export default function RootLayout({
               <main className="flex-auto">{children}</main>
 
               {/* Footer */}
+              <Footer />
             </div>
           </div>
         </ThemeProvider>
