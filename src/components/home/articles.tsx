@@ -14,7 +14,7 @@ export default async function Articles() {
           className="group relative flex flex-col items-start"
         >
           <h2 className="text-base font-semibold tracking-tight">
-            <div className="absolute -inset-x-4 -inset-y-6 z-0 scale-95 bg-zinc-50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 sm:-inset-x-6 sm:rounded-2xl dark:bg-zinc-800/50"></div>
+            <div className="bg-muted absolute -inset-x-4 -inset-y-6 z-0 scale-95 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 sm:-inset-x-6 sm:rounded-2xl"></div>
             <a href={article.href}>
               <span className="absolute -inset-x-4 -inset-y-6 z-20 sm:-inset-x-6 sm:rounded-2xl"></span>
               <span className="relative z-10">{article.title}</span>
@@ -37,7 +37,7 @@ export default async function Articles() {
           </p>
           <div
             aria-hidden="true"
-            className="relative z-10 mt-4 flex items-center gap-3 text-sm font-medium text-teal-500"
+            className="relative z-10 mt-4 flex items-center gap-2 text-sm font-medium text-teal-500"
           >
             Read article
             <ChevronRight className="size-3" />
