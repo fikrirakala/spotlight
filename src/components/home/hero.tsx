@@ -1,4 +1,5 @@
 import Container from "../Container";
+import { SocialMedia } from "./social-media";
 
 export default function Hero() {
   return (
@@ -14,6 +15,7 @@ export default function Hero() {
             technologies that empower regular people to explore space on their
             own terms.
           </p>
+          <SocialMedia className="mt-6 gap-x-6" />
         </div>
       </Container>
     </div>
