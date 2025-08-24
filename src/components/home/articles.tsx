@@ -14,14 +14,14 @@ export default async function Articles() {
           className="group relative flex flex-col items-start"
         >
           <h2 className="text-base font-semibold tracking-tight">
-            <div className="bg-muted absolute -inset-x-4 -inset-y-6 z-0 scale-95 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 sm:-inset-x-6 sm:rounded-2xl"></div>
+            <div className="bg-muted/50 absolute -inset-x-4 -inset-y-6 z-0 scale-95 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 sm:-inset-x-6 sm:rounded-2xl"></div>
             <a href={article.href}>
               <span className="absolute -inset-x-4 -inset-y-6 z-20 sm:-inset-x-6 sm:rounded-2xl"></span>
               <span className="relative z-10">{article.title}</span>
             </a>
           </h2>
           <time
-            className="text-muted-foreground/70 relative z-10 order-first mb-3 flex items-center pl-3.5 text-sm"
+            className="text-muted-foreground/50 relative z-10 order-first mb-3 flex items-center pl-3.5 text-sm"
             dateTime={article.date}
           >
             <span

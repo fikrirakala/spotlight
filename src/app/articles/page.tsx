@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   description: "Stay up-to-date with the latest news.",
 };
 
-export default async function Articles() {
+export default async function ArticlesPage() {
   const articles = await loadArticles();
   return (
     <div className="pt-16 sm:px-8 sm:pt-32">
