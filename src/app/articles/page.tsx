@@ -1,90 +1,82 @@
-import { type Metadata } from 'next'
-import Image from 'next/image'
-import Link from 'next/link'
+import { type Metadata } from "next";
 
-import { Border } from '@/components/Border'
-import { Button } from '@/components/Button'
-import { ContactSection } from '@/components/ContactSection'
-import { Container } from '@/components/Container'
-import { FadeIn } from '@/components/FadeIn'
-import { PageIntro } from '@/components/PageIntro'
-import { RootLayout } from '@/components/RootLayout'
-import { formatDate } from '@/lib/formatDate'
-import { loadArticles } from '@/lib/mdx'
+import { ChevronRight } from "lucide-react";
+
+import Container from "@/components/container";
+import { formatDate } from "@/lib/formatDate";
+import { loadArticles } from "@/lib/mdx";
 
 export const metadata: Metadata = {
-  title: 'Blog',
-  description:
-    'Stay up-to-date with the latest industry news as our marketing teams finds new ways to re-purpose old CSS tricks articles.',
-}
+  title: "Articles",
+  description: "Stay up-to-date with the latest news.",
+};
 
-export default async function Blog() {
-  let articles = await loadArticles()
-
+export default async function Articles() {
+  const articles = await loadArticles();
   return (
-    <RootLayout>
-      <PageIntro eyebrow="Blog" title="The latest articles and news">
-        <p>
-          Stay up-to-date with the latest industry news as our marketing teams
-          finds new ways to re-purpose old CSS tricks articles.
-        </p>
-      </PageIntro>
-
-      <Container className="mt-24 sm:mt-32 lg:mt-40">
-        <div className="space-y-24 lg:space-y-32">
-          {articles.map((article) => (
-            <FadeIn key={article.href}>
-              <article>
-                <Border className="pt-16">
-                  <div className="relative lg:-mx-4 lg:flex lg:justify-end">
-                    <div className="pt-10 lg:w-2/3 lg:flex-none lg:px-4 lg:pt-0">
-                      <h2 className="font-display text-2xl font-semibold text-neutral-950">
-                        <Link href={article.href}>{article.title}</Link>
-                      </h2>
-                      <dl className="lg:absolute lg:top-0 lg:left-0 lg:w-1/3 lg:px-4">
-                        <dt className="sr-only">Published</dt>
-                        <dd className="absolute top-0 left-0 text-sm text-neutral-950 lg:static">
-                          <time dateTime={article.date}>
-                            {formatDate(article.date)}
-                          </time>
-                        </dd>
-                        <dt className="sr-only">Author</dt>
-                        <dd className="mt-6 flex gap-x-4">
-                          <div className="flex-none overflow-hidden rounded-xl bg-neutral-100">
-                            <Image
-                              alt=""
-                              {...article.author.image}
-                              className="h-12 w-12 object-cover grayscale"
-                            />
-                          </div>
-                          <div className="text-sm text-neutral-950">
-                            <div className="font-semibold">
-                              {article.author.name}
-                            </div>
-                            <div>{article.author.role}</div>
-                          </div>
-                        </dd>
-                      </dl>
-                      <p className="mt-6 max-w-2xl text-base text-neutral-600">
-                        {article.description}
-                      </p>
-                      <Button
-                        href={article.href}
-                        aria-label={`Read more: ${article.title}`}
-                        className="mt-8"
+    <div className="pt-16 sm:px-8 sm:pt-32">
+      <Container>
+        <header className="max-w-2xl">
+          <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
+            Writing on software design, company building, and the aerospace
+            industry.
+          </h1>
+          <p className="text-muted-foreground mt-6 text-base">
+            All of my long-form thoughts on programming, leadership, product
+            design, and more, collected in chronological order.
+          </p>
+        </header>
+        <div className="mt-16 sm:mt-20">
+          <div className="border-border/50 md:border-l md:pl-6">
+            <div className="flex max-w-3xl flex-col space-y-16">
+              {articles.map((article, index) => (
+                <article
+                  key={index}
+                  className="md:grid md:grid-cols-4 md:items-baseline"
+                >
+                  <div className="group relative flex flex-col items-start md:col-span-3">
+                    <h2 className="text-base font-semibold tracking-tight">
+                      <div className="bg-muted/50 absolute -inset-x-4 -inset-y-6 z-0 scale-95 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 sm:-inset-x-6 sm:rounded-2xl"></div>
+                      <a href={article.href}>
+                        <span className="absolute -inset-x-4 -inset-y-6 z-20 sm:-inset-x-6 sm:rounded-2xl"></span>
+                        <span className="relative z-10">{article.title}</span>
+                      </a>
+                    </h2>
+                    <time
+                      className="text-muted-foreground/70 relative z-10 order-first mb-3 flex items-center pl-3.5 text-sm md:hidden"
+                      dateTime={article.date}
+                    >
+                      <span
+                        className="absolute inset-y-0 left-0 flex items-center"
+                        aria-hidden="true"
                       >
-                        Read more
-                      </Button>
+                        <span className="bg-border h-4 w-0.5 rounded-full"></span>
+                      </span>
+                      {formatDate(article.date)}
+                    </time>
+                    <p className="text-muted-foreground relative z-10 mt-2 text-sm">
+                      {article.description}
+                    </p>
+                    <div
+                      aria-hidden="true"
+                      className="relative z-10 mt-4 flex items-center gap-2 text-sm font-medium text-teal-500"
+                    >
+                      Read article
+                      <ChevronRight className="size-3" />
                     </div>
                   </div>
-                </Border>
-              </article>
-            </FadeIn>
-          ))}
+                  <time
+                    className="text-muted-foreground/70 relative z-10 order-first mt-1 mb-3 flex items-center text-sm max-md:hidden"
+                    dateTime={article.date}
+                  >
+                    {formatDate(article.date)}
+                  </time>
+                </article>
+              ))}
+            </div>
+          </div>
         </div>
       </Container>
-
-      <ContactSection />
-    </RootLayout>
-  )
+    </div>
+  );
 }
