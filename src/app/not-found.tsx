@@ -1,11 +1,9 @@
 import Link from "next/link";
 
-import { FadeIn } from "@/components/FadeIn";
-
 export default function NotFound() {
   return (
     <div className="flex h-full items-center pt-24 sm:pt-32 lg:pt-40">
-      <FadeIn className="flex max-w-xl flex-col items-center text-center">
+      <div className="flex max-w-xl flex-col items-center text-center">
         <p className="font-display text-4xl font-semibold text-neutral-950 sm:text-5xl">
           404
         </p>
@@ -21,7 +19,7 @@ export default function NotFound() {
         >
           Go to the home page
         </Link>
-      </FadeIn>
+      </div>
     </div>
   );
 }
