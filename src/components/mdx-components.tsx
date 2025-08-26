@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 import clsx from "clsx";
 
 import { Blockquote } from "@/components/blockquote";
@@ -53,5 +55,33 @@ export const MDXComponents = {
   },
   wrapper({ className, ...props }: React.ComponentPropsWithoutRef<"div">) {
     return <div className={cn("mt-8", className)} {...props} />;
+  },
+  SectionUses({
+    title,
+    className,
+    children,
+  }: {
+    title: string;
+    className?: string;
+    children: ReactNode;
+  }) {
+    return (
+      <div className={cn("md:border-border/50 md:border-l md:pl-6", className)}>
+        <div className="grid max-w-3xl grid-cols-1 gap-y-8 md:grid-cols-4">
+          <h2 className="text-sm font-semibold">{title}</h2>
+          <div className="md:col-span-3">
+            <div className="typography space-y-10">{children}</div>
+          </div>
+        </div>
+      </div>
+    );
+  },
+  UsesItem({ title, children }: { title: string; children: ReactNode }) {
+    return (
+      <div>
+        <h3 className="mt-0 mb-2 text-base">{title}</h3>
+        {children}
+      </div>
+    );
   },
 };
