@@ -2,6 +2,8 @@ import Image, { type ImageProps } from "next/image";
 
 import clsx from "clsx";
 
+import { Border } from "@/components/border";
+
 type ImagePropsWithOptionalAlt = Omit<ImageProps, "alt"> & { alt?: string };
 
 function BlockquoteWithImage({
@@ -53,7 +55,7 @@ function BlockquoteWithoutImage({
   className?: string;
 }) {
   return (
-    <div className={clsx("pl-8", className)}>
+    <Border position="left" className={clsx("pl-8", className)}>
       <figure className="text-sm">
         <blockquote className="text-neutral-600 *:relative [&>:first-child]:before:absolute [&>:first-child]:before:right-full [&>:first-child]:before:content-['“'] [&>:last-child]:after:content-['”']">
           {typeof children === "string" ? <p>{children}</p> : children}
@@ -62,7 +64,7 @@ function BlockquoteWithoutImage({
           {author.name}, {author.role}
         </figcaption>
       </figure>
-    </div>
+    </Border>
   );
 }
 
