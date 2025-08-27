@@ -84,4 +84,37 @@ export const MDXComponents = {
       </div>
     );
   },
+  Bookmarks({
+    title,
+    className,
+    children,
+  }: {
+    title: string;
+    className?: string;
+    children: ReactNode;
+  }) {
+    return (
+      <div className={cn("md:border-border/50 md:border-l md:pl-6", className)}>
+        <div className="grid max-w-3xl grid-cols-1 gap-y-8 md:grid-cols-4">
+          <h2 className="text-sm font-semibold">{title}</h2>
+          <div className="md:col-span-3">
+            <div className="space-y-4">{children}</div>
+          </div>
+        </div>
+      </div>
+    );
+  },
+  BookmarkLink({ href, children }: { href: string; children: ReactNode }) {
+    return (
+      <div>
+        <a
+          href={href}
+          target="_blank"
+          className="text-foreground hover:text-muted-foreground font-display text-base font-semibold no-underline transition-all hover:underline"
+        >
+          {children}
+        </a>
+      </div>
+    );
+  },
 };
