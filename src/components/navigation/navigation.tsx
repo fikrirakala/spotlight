@@ -33,7 +33,7 @@ export default function Navigation() {
 
   return (
     <nav className="pointer-events-auto hidden md:block">
-      <ul className="bg-background ring-border flex rounded-full px-3 text-sm font-medium shadow-lg ring-1">
+      <ul className="bg-background dark:bg-input/30 dark:border-input flex rounded-full border px-3 text-sm font-medium shadow-lg">
         {navigation.map((item, index) => (
           <li key={index}>
             <Link
@@ -44,6 +44,9 @@ export default function Navigation() {
               )}
             >
               {item.name}
+              {pathname === item.href && (
+                <span className="absolute inset-x-1 -bottom-px h-px bg-linear-to-r from-teal-500/0 via-teal-500/40 to-teal-500/0 dark:from-teal-400/0 dark:via-teal-400/40 dark:to-teal-400/0"></span>
+              )}
             </Link>
           </li>
         ))}
