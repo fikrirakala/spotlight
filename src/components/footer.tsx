@@ -22,6 +22,10 @@ const links = [
     name: "Uses",
     href: "/uses",
   },
+  {
+    name: "Bookmarks",
+    href: "/bookmarks",
+  },
 ];
 
 export default function Footer() {

@@ -4,6 +4,7 @@ import Image, { type ImageProps } from "next/image";
 import { useRef } from "react";
 
 import {
+  MotionStyle,
   motion,
   useMotionTemplate,
   useScroll,
@@ -28,7 +29,7 @@ export function GrayscaleTransitionImage(
 
   return (
     <div ref={ref} className="group relative">
-      <MotionImage alt="" style={{ filter } as any} {...props} />
+      <MotionImage alt="" style={{ filter } as MotionStyle} {...props} />
       <div
         className="pointer-events-none absolute top-0 left-0 w-full opacity-0 transition duration-300 group-hover:opacity-100"
         aria-hidden="true"
