@@ -56,7 +56,7 @@ export const MDXComponents = {
   wrapper({ className, ...props }: React.ComponentPropsWithoutRef<"div">) {
     return <div className={cn("mt-8", className)} {...props} />;
   },
-  SectionUses({
+  Section({
     title,
     className,
     children,
@@ -76,7 +76,7 @@ export const MDXComponents = {
       </div>
     );
   },
-  UsesItem({ title, children }: { title: string; children: ReactNode }) {
+  SectionEntry({ title, children }: { title: string; children: ReactNode }) {
     return (
       <div>
         <h3 className="mt-0 mb-2 text-base">{title}</h3>
