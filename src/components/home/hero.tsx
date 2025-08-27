@@ -6,7 +6,7 @@ export default function Hero() {
     <div className="pt-32 sm:px-8">
       <Container>
         <div className="max-w-2xl">
-          <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
+          <h1 className="font-display text-4xl font-bold tracking-tight sm:text-5xl">
             Software designer, founder, and amateur astronaut.
           </h1>
           <p className="text-muted-foreground mt-6 text-base">

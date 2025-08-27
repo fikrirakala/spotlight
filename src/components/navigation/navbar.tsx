@@ -9,7 +9,7 @@ import ThemeSwitch from "./theme-switch";
 function Avatar() {
   return (
     <div className="bg-background ring-border h-10 w-10 rounded-full p-0.5 shadow-lg ring-1">
-      <Link href="/" className="pointer-events-auto">
+      <Link aria-label="Home" href="/" className="pointer-events-auto">
         <Image
           src={avatar}
           alt=""
