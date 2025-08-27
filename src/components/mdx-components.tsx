@@ -2,11 +2,10 @@ import { ReactNode } from "react";
 
 import clsx from "clsx";
 
-import { Blockquote } from "@/components/blockquote";
 import { GrayscaleTransitionImage } from "@/components/grayscale-transition-image";
 import { cn } from "@/lib/utils";
 
-import { Border } from "./border";
+import { Blockquote } from "./blockquote";
 
 export const MDXComponents = {
   Blockquote({
@@ -22,7 +21,7 @@ export const MDXComponents = {
     return (
       <div
         className={cn(
-          "group isolate my-10 overflow-hidden rounded-4xl bg-neutral-100 max-sm:-mx-6",
+          "group isolate my-10 overflow-hidden rounded-4xl max-sm:-mx-6",
           className
         )}
       >
@@ -42,12 +41,12 @@ export const MDXComponents = {
     className?: string;
   }) {
     return (
-      <Border position="left" className={clsx("my-10 pl-8", className)}>
-        <p className="font-display text-sm font-bold tracking-widest text-neutral-950 uppercase">
+      <div className={clsx("border-border my-10 border-l pl-8", className)}>
+        <p className="font-display text-sm font-bold tracking-widest uppercase">
           Top tip
         </p>
         <div className="mt-4">{children}</div>
-      </Border>
+      </div>
     );
   },
   Typography({ className, ...props }: React.ComponentPropsWithoutRef<"div">) {
