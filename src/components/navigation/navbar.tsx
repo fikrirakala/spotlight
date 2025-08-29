@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import avatar from "@/images/avatar.webp";
 
+import MobileNavigation from "./mobile-navigation";
 import Navigation from "./navigation";
 import ThemeSwitch from "./theme-switch";
 
@@ -35,6 +36,7 @@ export default function Navbar() {
 
                 {/* Navigation */}
                 <div className="flex flex-1 justify-end md:justify-center">
+                  <MobileNavigation />
                   <Navigation />
                 </div>
 
