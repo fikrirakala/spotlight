@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
+import { motion } from "motion/react";
+
 import { cn } from "@/lib/utils";
 
 const navigation = [
@@ -45,7 +47,10 @@ export default function Navigation() {
             >
               {item.name}
               {pathname === item.href && (
-                <span className="absolute inset-x-1 -bottom-px h-px bg-linear-to-r from-teal-500/0 via-teal-500/40 to-teal-500/0 dark:from-teal-400/0 dark:via-teal-400/40 dark:to-teal-400/0"></span>
+                <motion.span
+                  layoutId="underline"
+                  className="absolute inset-x-1 -bottom-px h-px bg-linear-to-r from-teal-500/0 via-teal-500/40 to-teal-500/0 dark:from-teal-400/0 dark:via-teal-400/40 dark:to-teal-400/0"
+                ></motion.span>
               )}
             </Link>
           </li>
