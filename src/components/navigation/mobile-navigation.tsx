@@ -46,13 +46,13 @@ export default function MobileNavigation() {
             Menu
           </Button>
         </SheetTrigger>
-        <SheetContent>
-          <SheetHeader>
+        <SheetContent className="gap-0">
+          <SheetHeader className="p-6">
             <SheetTitle className="text-muted-foreground text-sm">
               Navigation
             </SheetTitle>
           </SheetHeader>
-          <ul className="divide-border -my-2 divide-y p-4 text-base">
+          <ul className="divide-border divide-y px-6 pt-0 pb-6 text-base">
             {navigation.map((link, index) => (
               <li key={index}>
                 <Link
