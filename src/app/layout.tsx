@@ -1,6 +1,6 @@
 import { type Metadata } from "next";
 
-import Footer from "@/components/footer";
+import Footer from "@/components/navigation/footer";
 import Navbar from "@/components/navigation/navbar";
 import { ThemeProvider } from "@/components/theme-provider";
 import "@/styles/tailwind.css";
