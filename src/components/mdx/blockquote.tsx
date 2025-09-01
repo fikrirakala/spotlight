@@ -2,7 +2,7 @@ import Image, { type ImageProps } from "next/image";
 
 import clsx from "clsx";
 
-import { Border } from "@/components/border";
+import { Border } from "./border";
 
 type ImagePropsWithOptionalAlt = Omit<ImageProps, "alt"> & { alt?: string };
 

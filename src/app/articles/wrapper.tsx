@@ -1,5 +1,5 @@
 import Container from "@/components/container";
-import { MDXComponents } from "@/components/mdx-components";
+import { MDXComponents } from "@/components/mdx/mdx-components";
 import { formatDate } from "@/lib/formatDate";
 import { type Article, type MDXEntry } from "@/lib/mdx";
 

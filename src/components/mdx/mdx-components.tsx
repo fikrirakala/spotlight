@@ -2,10 +2,10 @@ import { ReactNode } from "react";
 
 import clsx from "clsx";
 
-import { GrayscaleTransitionImage } from "@/components/grayscale-transition-image";
 import { cn } from "@/lib/utils";
 
 import { Blockquote } from "./blockquote";
+import { GrayscaleTransitionImage } from "./grayscale-transition-image";
 
 export const MDXComponents = {
   Blockquote({
