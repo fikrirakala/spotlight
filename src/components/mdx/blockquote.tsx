@@ -1,6 +1,6 @@
 import Image, { type ImageProps } from "next/image";
 
-import clsx from "clsx";
+import { cn } from "@/lib/utils";
 
 import { Border } from "./border";
 
@@ -19,7 +19,7 @@ function BlockquoteWithImage({
 }) {
   return (
     <figure
-      className={clsx(
+      className={cn(
         "grid grid-cols-[auto_1fr] items-center gap-x-4 gap-y-8 sm:grid-cols-12 sm:grid-rows-[1fr_auto_auto_1fr] sm:gap-x-10 lg:gap-x-16",
         className
       )}
@@ -55,7 +55,7 @@ function BlockquoteWithoutImage({
   className?: string;
 }) {
   return (
-    <Border position="left" className={clsx("pl-8", className)}>
+    <Border position="left" className={cn("pl-8", className)}>
       <figure className="text-sm">
         <blockquote className="text-neutral-600 *:relative [&>:first-child]:before:absolute [&>:first-child]:before:right-full [&>:first-child]:before:content-['“'] [&>:last-child]:after:content-['”']">
           {typeof children === "string" ? <p>{children}</p> : children}

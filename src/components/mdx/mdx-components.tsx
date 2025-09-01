@@ -1,7 +1,5 @@
 import { ReactNode } from "react";
 
-import clsx from "clsx";
-
 import { cn } from "@/lib/utils";
 
 import { Blockquote } from "./blockquote";
@@ -41,7 +39,7 @@ export const MDXComponents = {
     className?: string;
   }) {
     return (
-      <div className={clsx("border-border my-10 border-l pl-8", className)}>
+      <div className={cn("border-border my-10 border-l pl-8", className)}>
         <p className="font-display text-sm font-bold tracking-widest uppercase">
           Top tip
         </p>

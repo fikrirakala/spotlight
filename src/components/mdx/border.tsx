@@ -1,4 +1,4 @@
-import clsx from "clsx";
+import { cn } from "@/lib/utils";
 
 type BorderProps<T extends React.ElementType> = {
   as?: T;
@@ -19,7 +19,7 @@ export function Border<T extends React.ElementType = "div">({
 
   return (
     <Component
-      className={clsx(
+      className={cn(
         className,
         "relative before:absolute after:absolute",
         invert
