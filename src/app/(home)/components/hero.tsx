@@ -1,4 +1,5 @@
-import Container from "../container";
+import Container from "@/components/container";
+
 import { SocialMedia } from "./social-media";
 
 export default function Hero() {

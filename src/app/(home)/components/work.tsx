@@ -2,6 +2,7 @@ import Image from "next/image";
 
 import { BriefcaseBusiness } from "lucide-react";
 
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -13,8 +14,6 @@ import airbnb from "@/images/work/airbnb.svg";
 import facebook from "@/images/work/facebook.svg";
 import planetaria from "@/images/work/planetaria.svg";
 import starbucks from "@/images/work/starbucks.svg";
-
-import { Button } from "../ui/button";
 
 const works = [
   {

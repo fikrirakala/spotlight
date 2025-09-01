@@ -1,9 +1,10 @@
 import Container from "@/components/container";
-import Articles from "@/components/home/articles";
-import Gallery from "@/components/home/gallery";
-import Hero from "@/components/home/hero";
-import Newsletter from "@/components/home/newsletter";
-import Work from "@/components/home/work";
+
+import Articles from "./components/articles";
+import Gallery from "./components/gallery";
+import Hero from "./components/hero";
+import Newsletter from "./components/newsletter";
+import Work from "./components/work";
 
 export default function Home() {
   return (
